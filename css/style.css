@@ -1,0 +1,400 @@
+:root {
+  scroll-behavior: smooth;
+}
+
+@keyframes fade{
+  from{
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale{
+  0%{
+    transform: scale(0.95);
+    opacity: 0;
+  }
+
+  100%{
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/*
+Forhindrer at text flyter ut til alle kanter ved ekstremt smal skjerm
+*/
+@media (max-width: 350px) {
+  h1, h2, h3, h4, h5, h6, p{
+  overflow-wrap: break-word;
+  word-break: break-all;
+  }
+}
+
+
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/*
+Fade til AI svar
+*/
+.animateAI{
+  animation: scale 0.4s ease-out forwards;
+}
+
+
+
+/*
+Containter til index
+*/
+
+.container{
+  animation: fade 0.8s ease-out;
+}
+
+.page-container {
+    padding-top: 100px; 
+    min-height: 100vh;
+    animation: fade 0.8s ease-out;  
+}
+/*
+Øvrige containers
+*/
+.page-container-2 {
+  padding-top: 100px;
+  min-height: 100vh;
+  width: 60%;
+  margin: auto;
+  animation: fade 0.8s ease-out;
+}
+
+.page-container-3 {
+  margin-top: 100px;
+  min-height: 100vh;
+  width: 80%;
+  margin: auto;
+  animation: fade 0.8s ease-out;
+}
+
+.article-container{
+  width: 50px;
+  height: 50px;
+}
+
+@media (max-width: 991px) {
+  .page-container-2 {
+  width: 80%;
+  }
+
+  .page-container-3 {
+    width: 90%;
+  }
+}
+
+
+
+/*
+Backgroundimage
+*/
+.bg-image{
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  filter: brightness(0.6);
+  position: fixed;
+}
+
+.article-image{
+  object-fit: cover;
+}
+
+/*
+Header
+*/
+.nav-img{
+  height: 8vh;
+}
+
+.navbar-gradient{
+    transition: background-color 0.3s ease; 
+    background: linear-gradient(
+        to bottom, 
+        rgba(0, 0, 0, 0.8) 0%,   
+        rgba(0, 0, 0, 0.4) 50%,  
+        rgba(0, 0, 0, 0) 100%    
+    );
+}
+
+.navbar-scrolled{
+  background-color: #f8f9fa;
+  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.15);
+}
+
+.navbar{
+  transition: all 0.5s;
+}
+
+
+/*
+Hero
+*/
+
+.hero-img{
+  height: 20vh;
+}
+
+.hero-section {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+/*
+Main text design
+*/
+
+.main-title-design {
+    text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.6);
+    letter-spacing: -1px;
+}
+
+.main-title-design-2 {
+    font-size: 2.2rem;
+}
+
+.main-text-design {
+    text-shadow: 0px 2px 8px rgba(0, 0, 0, 0.5);
+    font-size: 1.5rem;
+}
+
+/* Hero ilpasning for mindre skjermer */
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem; /* Mindre tittel på mobil */
+    }
+    .hero-text {
+        font-size: 1.1rem;
+    }
+}
+
+
+/*
+Footer
+*/
+.socials a{
+  text-decoration: none;
+}
+
+.socials a:hover{
+  opacity: 0.8;
+}
+
+.socials img{
+  transition: transform 0.2s ease;
+}
+
+.socials img:hover{
+  transform: scale(1.2);
+}
+
+#scrollToTopBtn{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 10000;
+  border: none;
+  background-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 20px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 0.3s, background-color 0.3s;
+}
+
+#scrollToTopBtn:hover{
+  background-color: #bb2d3b;
+}
+
+#scrollToTopBtn:focus-visible{
+  outline: 3px solid rgba(187, 45, 59, 0.611);
+  outline-offset: 3px;
+}
+
+.label{
+  padding-bottom: 1rem;
+}
+
+/* Skip link: visually hidden but visible on focus */
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.skip-link:focus, .skip-link:active{
+  left: 10px;
+  top: 10px;
+  width: auto;
+  height: auto;
+  padding: 8px 12px;
+  background: #000;
+  color: #fff;
+  z-index: 10000;
+  border-radius: 4px;
+}
+
+/* Ensure keyboard focus is visible for interactive elements */
+a:focus-visible, button:focus-visible, .btn:focus-visible {
+  outline: 3px solid rgba(13,202,240,0.6);
+  outline-offset: 3px;
+}
+
+/* Navbar Search Styles */
+.navbar-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  margin-left: 0;
+}
+
+/* Push search bar to the right on desktop only */
+@media (min-width: 992px) {
+  .navbar-nav {
+    display: flex;
+    width: 100%;
+  }
+  
+  .navbar-search-item {
+    margin-left: auto !important;
+  }
+  
+  .search-input {
+    margin-top: 0.25rem;
+  }
+}
+
+/* Center navbar items on mobile/tablet */
+@media (max-width: 991px) {
+  .navbar-nav {
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+  
+  .navbar-search-item {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbar-search {
+    justify-content: center;
+  }
+}
+
+.search-input {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  outline: none;
+  transition: all 0.3s ease;
+  min-width: 180px;
+}
+
+.search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.search-input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #0dcaf0;
+  box-shadow: 0 0 0 3px rgba(13, 202, 240, 0.1);
+}
+
+/* Change search input color when navbar is scrolled/light */
+.navbar-scrolled .search-input {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.navbar-scrolled .search-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.navbar-light .search-input {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #333;
+}
+
+.navbar-light .search-input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.search-submit-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s ease, color 0.5s ease;
+}
+
+.search-submit-btn:hover {
+  opacity: 0.8;
+}
+
+.search-submit-btn:active {
+  transform: scale(0.95);
+}
+
+/* Change search icon color when navbar is scrolled/light */
+.navbar-scrolled .search-submit-btn {
+  color: #333;
+}
+
+.navbar-light .search-submit-btn {
+  color: #333;
+}
+
+@media (max-width: 576px) {
+  .search-container {
+    min-width: 200px;
+    right: -1rem;
+  }
+  
+  .navbar-search {
+    margin-left: 0.5rem;
+  }
+}

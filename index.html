@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadBoyDating - Hjem</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="icon" type="image/png" href="img/bbdlogo.png">
+    <script defer src="js/bootstrap.bundle.js"></script>
+    <script defer src="js/index.js"></script>
+</head>
+<body class="bg-light">
+
+  <a class="skip-link" href="#main-content">Hopp til hovedinnhold</a>
+
+  <!-- background image (decorative) -->
+  <img class="bg-image" src="img/webdev.jpg" alt="" aria-hidden="true">
+
+<!-- header -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient">
+  <div class="container-fluid">
+    <a href="index.html">
+        <img class="nav-img" src="img/bbdlogo.png" alt="BadBoy Logo">
+    </a>
+    <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="index.html">Hjem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="FAQs.html">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logginn.html">Logg inn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registrering.html">Registrering</a>
+        </li>
+        <li class="nav-item navbar-search-item">
+          <div class="navbar-search">
+            <input type="text" id="faqSearchInput" class="search-input" placeholder="Søk..." aria-label="Søk i FAQs">
+            <button id="searchSubmitBtn" class="search-submit-btn" aria-label="Utfør søk">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.397h-.001c.003-.003.006-.007.009-.01l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.009-.01zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- main -->
+<main id="main-content" class="hero-section d-flex align-items-center justify-content-center">
+  <div class="container text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h1 class="display-1 fw-bold text-white main-title-design">
+         <span class="text-danger">BadBoy</span>Dating</span>
+        </h1>
+        <h2 class="display-6 fw-bold text-white mb-2 main-title-design">der kjærligheten er <span class="text-danger">fengslende</span></h2>
+        <img class="hero-img mb-2" src="img/bbdlogo.png" alt="BadBoy Logo">
+        <!--<p class="lead text-white mb-5 opacity-90 main-text-design">
+          En datingside med fokus på å skape et liv sammen.<br>
+          Forstå menneske bak handlingen og mestre fremtiden sammen.
+        </p>-->
+        
+        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+          <a href="registrering.html" class="btn btn-danger btn-lg px-5 py-3 fw-bold text-uppercase shadow">
+            Registrer deg nå
+          </a>
+          <a href="logginn.html" class="btn btn-light btn-lg px-5 py-3 fw-bold text-uppercase shadow">
+            Logg inn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<!-- footer -->
+<footer class="bg-light text-dark py-5" aria-label="Bånntekst med adresse, kontakt og lenker til sosiale medier">
+    <div class="container">
+    
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 footer">
+
+            <!-- adresse -->
+            <div class="col text-center text-md-start border-end border-start">
+                <h2 class="mb-2">BadBoyDating</h2>
+                    <p class="mb-1">En datingside med fokus på å skape et liv sammen.</p>
+                    <p class="mb-1">Forstå menneske bak handlingen og mestre fremtiden sammen.</p>
+            </div>
+
+            <!-- kontakt -->
+            <div class="col text-center text-md-start border-end border-start">
+                <h2 class="mb-2">Kontakt</h2>
+                    <p class="mb-1">badboydating@love.com</p>
+                    <p class="mb-1">support@badboydating.com</p>
+            </div>
+
+            <!-- sosiale medier -->
+            <div class="col text-center text-md-start border-end border-start socials">
+                <h2 class="mb-3">Følg oss</h2>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+                    <img src="bootstrap-icons-1.13.1/facebook.svg" alt="BadBoyDating på Facebook" height="32px" width="32px">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <img src="bootstrap-icons-1.13.1/linkedin.svg" alt="BadBoyDating på Linkedin" height="32px" width="32px">
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+                    <img src="bootstrap-icons-1.13.1/twitter-x.svg" alt="BadBoyDating på Twitter" height="32px" width="32px">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+                    <img src="bootstrap-icons-1.13.1/instagram.svg" alt="BadBoyDating på Instagram" height="32px" width="32px">
+                </a>
+                <a href="https://www.snapchat.com" target="_blank" rel="noopener noreferrer">
+                    <img src="bootstrap-icons-1.13.1/snapchat.svg" alt="BadBoyDating på Snapchat" height="32px" width="32px">
+                </a>                
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+<button id="scrollToTopBtn" class="d-none" title="Gå til toppen" aria-label="Knapp for å gå til toppen av siden">&#8593;</button>
+
+</body>
+</html>
