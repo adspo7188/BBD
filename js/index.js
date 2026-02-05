@@ -2,6 +2,7 @@
 
 const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
+const navbarCollapse = document.getElementById('navbarNav');
 
 window.addEventListener('scroll', () => {
     if(hamburger.classList.contains('active')){
@@ -28,7 +29,6 @@ window.addEventListener('resize', () => {
         // Close the hamburger menu
         hamburger.classList.remove('active');
         // Collapse the navbar
-        const navbarCollapse = document.getElementById('navbarNav');
         if(navbarCollapse) {
             navbarCollapse.classList.remove('show');
         }
@@ -199,7 +199,6 @@ hamburger.addEventListener('click', () => {
 // Close navbar when clicking outside
 document.addEventListener('click', (event) => {
     const navbar = document.querySelector('.navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
     
     // Check if click is outside the navbar
     if (!navbar.contains(event.target) && hamburger.classList.contains('active')) {
