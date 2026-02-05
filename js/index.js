@@ -69,58 +69,58 @@ if (searchSubmitBtn) {
   searchSubmitBtn.addEventListener('click', performFaqSearch);
 };
 
+// FAQ data for matching
+const faqs = [
+  {
+    id: 'collapseOne',
+    title: 'Hvordan oppretter jeg en profil?',
+    keywords: ['opprette', 'profil', 'registrere', 'biografi', 'bilde'],
+    buttonId: 'headingOne'
+  },
+  {
+    id: 'collapseTwo',
+    title: 'Er BadBoyDating trygt å bruke?',
+    keywords: ['trygt', 'sikkerhet', 'falske', 'profiler', 'rapportere'],
+    buttonId: 'headingTwo'
+  },
+  {
+    id: 'collapseThree',
+    title: 'Hvordan fungerer matching?',
+    keywords: ['matching', 'algoritme', 'interesser', 'sted', 'meldinger'],
+    buttonId: 'headingThree'
+  },
+  {
+    id: 'collapseFour',
+    title: 'Hva koster det å bruke tjenesten?',
+    keywords: ['koster', 'pris', 'gratis', 'premium', 'abonnement'],
+    buttonId: 'headingFour'
+  },
+  {
+    id: 'collapseFive',
+    title: 'Hvordan kan jeg slette profilen min?',
+    keywords: ['slette', 'profil', 'fjerne', 'konto', 'innstillinger'],
+    buttonId: 'headingFive'
+  },
+  {
+    id: 'collapseSix',
+    title: 'Hva bør jeg skrive i min første melding?',
+    keywords: ['melding', 'skrive', 'første', 'tips', 'kontakt'],
+    buttonId: 'headingSix'
+  },
+  {
+    id: 'collapseSeven',
+    title: 'Hvordan rapporterer jeg en annen bruker?',
+    keywords: ['rapportere', 'bruker', 'mistenkelig', 'plager', 'falsk'],
+    buttonId: 'headingSeven'
+  }
+];
+
 function performFaqSearch() {
   const searchTerm = faqSearchInput.value.trim().toLowerCase();
   
   if (!searchTerm) {
     return;
   };
-
-  // FAQ data for matching
-  const faqs = [
-    {
-      id: 'collapseOne',
-      title: 'Hvordan oppretter jeg en profil?',
-      keywords: ['opprette', 'profil', 'registrere', 'biografi', 'bilde'],
-      buttonId: 'headingOne'
-    },
-    {
-      id: 'collapseTwo',
-      title: 'Er BadBoyDating trygt å bruke?',
-      keywords: ['trygt', 'sikkerhet', 'falske', 'profiler', 'rapportere'],
-      buttonId: 'headingTwo'
-    },
-    {
-      id: 'collapseThree',
-      title: 'Hvordan fungerer matching?',
-      keywords: ['matching', 'algoritme', 'interesser', 'sted', 'meldinger'],
-      buttonId: 'headingThree'
-    },
-    {
-      id: 'collapseFour',
-      title: 'Hva koster det å bruke tjenesten?',
-      keywords: ['koster', 'pris', 'gratis', 'premium', 'abonnement'],
-      buttonId: 'headingFour'
-    },
-    {
-      id: 'collapseFive',
-      title: 'Hvordan kan jeg slette profilen min?',
-      keywords: ['slette', 'profil', 'fjerne', 'konto', 'innstillinger'],
-      buttonId: 'headingFive'
-    },
-    {
-      id: 'collapseSix',
-      title: 'Hva bør jeg skrive i min første melding?',
-      keywords: ['melding', 'skrive', 'første', 'tips', 'kontakt'],
-      buttonId: 'headingSix'
-    },
-    {
-      id: 'collapseSeven',
-      title: 'Hvordan rapporterer jeg en annen bruker?',
-      keywords: ['rapportere', 'bruker', 'mistenkelig', 'plager', 'falsk'],
-      buttonId: 'headingSeven'
-    }
-  ];
 
   // Find matching FAQ
   let matchedFaq = null;
