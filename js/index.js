@@ -47,16 +47,66 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(updateScrollState);
         ticking = true;
     }
+const navbarCollapse = document.getElementById('navbarNav');
+const scrollBtn = document.getElementById('scrollToTopBtn');
+
+let ticking = false;
+const navbarCollapse = document.getElementById('navbarNav');
+
+// Debounce utility to improve performance
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+
+            // Navbar logic
+            if(!hamburger.classList.contains('active')){
+                if(scrollY >= 56){
+                    navElement.classList.add('navbar-scrolled');
+                    navElement.classList.add('navbar-light');
+                    navElement.classList.remove('navbar-dark');
+                    navElement.classList.remove('navbar-gradient');
+                }
+                else{
+                    navElement.classList.remove('navbar-scrolled');
+                    navElement.classList.add('navbar-dark');
+                    navElement.classList.remove('navbar-light');
+                    navElement.classList.add('navbar-gradient');
+                };
+            }
+
+            // Scroll to top button logic
+            if (scrollBtn) {
+                if(scrollY >= 56){
+                    scrollBtn.classList.remove('d-none');
+                }
+                else{
+                    scrollBtn.classList.add('d-none');
+                }
+            }
+
+            ticking = false;
+        });
+
+        ticking = true;
+    }
 });
 
 // Handle window resize - close hamburger menu and scroll to top when going from small to big screen
-window.addEventListener('resize', () => {
+window.addEventListener('resize', debounce(() => {
     // Check if window is now larger than the lg breakpoint (992px)
     if(window.innerWidth >= 992 && hamburger.classList.contains('active')) {
         // Close the hamburger menu
         hamburger.classList.remove('active');
         // Collapse the navbar
-        const navbarCollapse = document.getElementById('navbarNav');
         if(navbarCollapse) {
             navbarCollapse.classList.remove('show');
         }
@@ -79,7 +129,7 @@ window.addEventListener('resize', () => {
             behavior: 'smooth'
         });
     }
-});
+}, 200));
 
 // Search functionality
 const faqSearchInput = document.getElementById('faqSearchInput');
@@ -97,58 +147,58 @@ if (searchSubmitBtn) {
   searchSubmitBtn.addEventListener('click', performFaqSearch);
 };
 
+// FAQ data for matching
+const faqs = [
+  {
+    id: 'collapseOne',
+    title: 'Hvordan oppretter jeg en profil?',
+    keywords: ['opprette', 'profil', 'registrere', 'biografi', 'bilde'],
+    buttonId: 'headingOne'
+  },
+  {
+    id: 'collapseTwo',
+    title: 'Er BadBoyDating trygt å bruke?',
+    keywords: ['trygt', 'sikkerhet', 'falske', 'profiler', 'rapportere'],
+    buttonId: 'headingTwo'
+  },
+  {
+    id: 'collapseThree',
+    title: 'Hvordan fungerer matching?',
+    keywords: ['matching', 'algoritme', 'interesser', 'sted', 'meldinger'],
+    buttonId: 'headingThree'
+  },
+  {
+    id: 'collapseFour',
+    title: 'Hva koster det å bruke tjenesten?',
+    keywords: ['koster', 'pris', 'gratis', 'premium', 'abonnement'],
+    buttonId: 'headingFour'
+  },
+  {
+    id: 'collapseFive',
+    title: 'Hvordan kan jeg slette profilen min?',
+    keywords: ['slette', 'profil', 'fjerne', 'konto', 'innstillinger'],
+    buttonId: 'headingFive'
+  },
+  {
+    id: 'collapseSix',
+    title: 'Hva bør jeg skrive i min første melding?',
+    keywords: ['melding', 'skrive', 'første', 'tips', 'kontakt'],
+    buttonId: 'headingSix'
+  },
+  {
+    id: 'collapseSeven',
+    title: 'Hvordan rapporterer jeg en annen bruker?',
+    keywords: ['rapportere', 'bruker', 'mistenkelig', 'plager', 'falsk'],
+    buttonId: 'headingSeven'
+  }
+];
+
 function performFaqSearch() {
   const searchTerm = faqSearchInput.value.trim().toLowerCase();
   
   if (!searchTerm) {
     return;
   };
-
-  // FAQ data for matching
-  const faqs = [
-    {
-      id: 'collapseOne',
-      title: 'Hvordan oppretter jeg en profil?',
-      keywords: ['opprette', 'profil', 'registrere', 'biografi', 'bilde'],
-      buttonId: 'headingOne'
-    },
-    {
-      id: 'collapseTwo',
-      title: 'Er BadBoyDating trygt å bruke?',
-      keywords: ['trygt', 'sikkerhet', 'falske', 'profiler', 'rapportere'],
-      buttonId: 'headingTwo'
-    },
-    {
-      id: 'collapseThree',
-      title: 'Hvordan fungerer matching?',
-      keywords: ['matching', 'algoritme', 'interesser', 'sted', 'meldinger'],
-      buttonId: 'headingThree'
-    },
-    {
-      id: 'collapseFour',
-      title: 'Hva koster det å bruke tjenesten?',
-      keywords: ['koster', 'pris', 'gratis', 'premium', 'abonnement'],
-      buttonId: 'headingFour'
-    },
-    {
-      id: 'collapseFive',
-      title: 'Hvordan kan jeg slette profilen min?',
-      keywords: ['slette', 'profil', 'fjerne', 'konto', 'innstillinger'],
-      buttonId: 'headingFive'
-    },
-    {
-      id: 'collapseSix',
-      title: 'Hva bør jeg skrive i min første melding?',
-      keywords: ['melding', 'skrive', 'første', 'tips', 'kontakt'],
-      buttonId: 'headingSix'
-    },
-    {
-      id: 'collapseSeven',
-      title: 'Hvordan rapporterer jeg en annen bruker?',
-      keywords: ['rapportere', 'bruker', 'mistenkelig', 'plager', 'falsk'],
-      buttonId: 'headingSeven'
-    }
-  ];
 
   // Find matching FAQ
   let matchedFaq = null;
@@ -198,8 +248,14 @@ scrollBtn.addEventListener('click', () => {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
+if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
-});
+}
  
 // Hamburge menu logic
 
@@ -216,10 +272,9 @@ hamburger.addEventListener('click', () => {
 // Close navbar when clicking outside
 document.addEventListener('click', (event) => {
     const navbar = document.querySelector('.navbar');
-    const navbarCollapse = document.getElementById('navbarNav');
     
     // Check if click is outside the navbar
-    if (!navbar.contains(event.target) && hamburger.classList.contains('active')) {
+    if (!navElement.contains(event.target) && hamburger.classList.contains('active')) {
         // Close the hamburger menu
         hamburger.classList.remove('active');
         // Collapse the navbar
