@@ -2,6 +2,7 @@
 
 const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
+const navbarCollapse = document.getElementById('navbarNav');
 const scrollBtn = document.getElementById('scrollToTopBtn');
 
 let ticking = false;
@@ -224,7 +225,7 @@ document.addEventListener('click', (event) => {
     const navbar = document.querySelector('.navbar');
     
     // Check if click is outside the navbar
-    if (!navbar.contains(event.target) && hamburger.classList.contains('active')) {
+    if (!navElement.contains(event.target) && hamburger.classList.contains('active')) {
         // Close the hamburger menu
         hamburger.classList.remove('active');
         // Collapse the navbar
