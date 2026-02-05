@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Benchmark</title>
+</head>
+<body>
+    <div id="navbarNav"></div>
+    <script>
+        const iterations = 100000;
+
+        // Baseline: getElementById inside loop
+        const startBaseline = performance.now();
+        for (let i = 0; i < iterations; i++) {
+            const el = document.getElementById('navbarNav');
+            if (el) {
+                // simulate usage
+                el.classList.contains('show');
+            }
+        }
+        const endBaseline = performance.now();
+        const baselineTime = endBaseline - startBaseline;
+
+        // Optimization: getElementById outside loop
+        const startOptimized = performance.now();
+        const elOptimized = document.getElementById('navbarNav');
+        for (let i = 0; i < iterations; i++) {
+            if (elOptimized) {
+                // simulate usage
+                elOptimized.classList.contains('show');
+            }
+        }
+        const endOptimized = performance.now();
+        const optimizedTime = endOptimized - startOptimized;
+
+        console.log(`Baseline (inside loop): ${baselineTime.toFixed(4)} ms`);
+        console.log(`Optimized (outside loop): ${optimizedTime.toFixed(4)} ms`);
+        console.log(`Improvement: ${(baselineTime / optimizedTime).toFixed(2)}x`);
+    </script>
+</body>
+</html>
