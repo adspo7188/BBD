@@ -2,6 +2,51 @@
 
 const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
+const scrollBtn = document.getElementById('scrollToTopBtn');
+
+let ticking = false;
+
+function updateScrollState() {
+    // Navbar logic
+    if(!hamburger.classList.contains('active')){
+        if(window.scrollY >= 56){
+             if(!navElement.classList.contains('navbar-scrolled')) {
+                navElement.classList.add('navbar-scrolled');
+                navElement.classList.add('navbar-light');
+                navElement.classList.remove('navbar-dark');
+                navElement.classList.remove('navbar-gradient');
+             }
+        }
+        else{
+            if(navElement.classList.contains('navbar-scrolled')) {
+                navElement.classList.remove('navbar-scrolled');
+                navElement.classList.add('navbar-dark');
+                navElement.classList.remove('navbar-light');
+                navElement.classList.add('navbar-gradient');
+            }
+        };
+    }
+
+    // Scroll to top button logic
+    if(window.scrollY >= 56){
+        if(scrollBtn.classList.contains('d-none')) {
+            scrollBtn.classList.remove('d-none');
+        }
+    }
+    else{
+        if(!scrollBtn.classList.contains('d-none')) {
+            scrollBtn.classList.add('d-none');
+        }
+    }
+
+    ticking = false;
+}
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(updateScrollState);
+        ticking = true;
+    }
 const navbarCollapse = document.getElementById('navbarNav');
 const scrollBtn = document.getElementById('scrollToTopBtn');
 
@@ -199,6 +244,10 @@ if (window.location.pathname.includes('FAQs.html') || document.title.includes('F
 
 // Scroll 2 top btn
 
+scrollBtn.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
 if (scrollBtn) {
     scrollBtn.addEventListener('click', () => {
         window.scrollTo({
