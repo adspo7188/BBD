@@ -4,6 +4,15 @@ const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
 const navbarCollapse = document.getElementById('navbarNav');
 
+// Debounce utility to improve performance
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
 window.addEventListener('scroll', () => {
     if(hamburger.classList.contains('active')){
         return;
@@ -23,7 +32,7 @@ window.addEventListener('scroll', () => {
 });
 
 // Handle window resize - close hamburger menu and scroll to top when going from small to big screen
-window.addEventListener('resize', () => {
+window.addEventListener('resize', debounce(() => {
     // Check if window is now larger than the lg breakpoint (992px)
     if(window.innerWidth >= 992 && hamburger.classList.contains('active')) {
         // Close the hamburger menu
@@ -51,7 +60,7 @@ window.addEventListener('resize', () => {
             behavior: 'smooth'
         });
     }
-});
+}, 200));
 
 // Search functionality
 const faqSearchInput = document.getElementById('faqSearchInput');
