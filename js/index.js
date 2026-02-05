@@ -2,23 +2,46 @@
 
 const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
+const scrollBtn = document.getElementById('scrollToTopBtn');
+
+let ticking = false;
 
 window.addEventListener('scroll', () => {
-    if(hamburger.classList.contains('active')){
-        return;
-    };
-    if(window.scrollY >= 56){
-        navElement.classList.add('navbar-scrolled');
-        navElement.classList.add('navbar-light');
-        navElement.classList.remove('navbar-dark');
-        navElement.classList.remove('navbar-gradient');
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            const scrollY = window.scrollY;
+
+            // Navbar logic
+            if(!hamburger.classList.contains('active')){
+                if(scrollY >= 56){
+                    navElement.classList.add('navbar-scrolled');
+                    navElement.classList.add('navbar-light');
+                    navElement.classList.remove('navbar-dark');
+                    navElement.classList.remove('navbar-gradient');
+                }
+                else{
+                    navElement.classList.remove('navbar-scrolled');
+                    navElement.classList.add('navbar-dark');
+                    navElement.classList.remove('navbar-light');
+                    navElement.classList.add('navbar-gradient');
+                };
+            }
+
+            // Scroll to top button logic
+            if (scrollBtn) {
+                if(scrollY >= 56){
+                    scrollBtn.classList.remove('d-none');
+                }
+                else{
+                    scrollBtn.classList.add('d-none');
+                }
+            }
+
+            ticking = false;
+        });
+
+        ticking = true;
     }
-    else{
-        navElement.classList.remove('navbar-scrolled');
-        navElement.classList.add('navbar-dark');
-        navElement.classList.remove('navbar-light');
-        navElement.classList.add('navbar-gradient');
-    };       
 });
 
 // Handle window resize - close hamburger menu and scroll to top when going from small to big screen
@@ -166,23 +189,14 @@ if (window.location.pathname.includes('FAQs.html') || document.title.includes('F
 
 // Scroll 2 top btn
 
-const scrollBtn = document.getElementById('scrollToTopBtn');
-
-window.addEventListener('scroll', () =>{
-    if(window.scrollY >= 56){
-        scrollBtn.classList.remove('d-none');
-    }
-    else{
-        scrollBtn.classList.add('d-none');
-    }
-});
-
-scrollBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     });
-});
+}
  
 // Hamburge menu logic
 
