@@ -196,18 +196,18 @@ const faqs = [
 
 function performFaqSearch() {
   const searchTerm = faqSearchInput.value.trim().toLowerCase();
-  
+
   if (!searchTerm) {
     return;
   }
 
   // Find matching FAQ
   let matchedFaq = null;
-  
+
   for (let faq of faqs) {
     const titleMatch = faq.title.toLowerCase().includes(searchTerm);
     const keywordMatch = faq.keywords.some(keyword => keyword.includes(searchTerm));
-    
+
     if (titleMatch || keywordMatch) {
       matchedFaq = faq;
       break;
