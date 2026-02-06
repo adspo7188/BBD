@@ -1,0 +1,13 @@
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /index.html HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /css/style.css HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /css/bootstrap.css HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /img/webdev.jpg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /img/bbdlogo.png HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /js/bootstrap.bundle.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /js/index.js HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /bootstrap-icons-1.13.1/twitter-x.svg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /bootstrap-icons-1.13.1/linkedin.svg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /bootstrap-icons-1.13.1/facebook.svg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /bootstrap-icons-1.13.1/instagram.svg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:41] "GET /bootstrap-icons-1.13.1/snapchat.svg HTTP/1.1" 200 -
+127.0.0.1 - - [06/Feb/2026 12:39:45] "GET /index.html HTTP/1.1" 304 -

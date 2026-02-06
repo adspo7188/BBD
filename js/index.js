@@ -1,40 +1,40 @@
-// Navbar
-
+// Navbar Elements
 const navElement = document.querySelector('.navbar');
 const hamburger = document.getElementById('hamburger');
 const scrollBtn = document.getElementById('scrollToTopBtn');
+const navbarCollapse = document.getElementById('navbarNav');
 
+// Debounce utility to improve performance
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
+// Scroll Handler
 let ticking = false;
 
 function updateScrollState() {
+    const scrollY = window.scrollY;
+
     // Navbar logic
-    if(!hamburger.classList.contains('active')){
-        if(window.scrollY >= 56){
-             if(!navElement.classList.contains('navbar-scrolled')) {
-                navElement.classList.add('navbar-scrolled');
-                navElement.classList.add('navbar-light');
-                navElement.classList.remove('navbar-dark');
-                navElement.classList.remove('navbar-gradient');
-             }
+    if (navElement && hamburger && !hamburger.classList.contains('active')) {
+        if (scrollY >= 56) {
+            navElement.classList.add('navbar-scrolled', 'navbar-light');
+            navElement.classList.remove('navbar-dark', 'navbar-gradient');
+        } else {
+            navElement.classList.remove('navbar-scrolled', 'navbar-light');
+            navElement.classList.add('navbar-dark', 'navbar-gradient');
         }
-        else{
-            if(navElement.classList.contains('navbar-scrolled')) {
-                navElement.classList.remove('navbar-scrolled');
-                navElement.classList.add('navbar-dark');
-                navElement.classList.remove('navbar-light');
-                navElement.classList.add('navbar-gradient');
-            }
-        };
     }
 
     // Scroll to top button logic
-    if(window.scrollY >= 56){
-        if(scrollBtn.classList.contains('d-none')) {
+    if (scrollBtn) {
+        if (scrollY >= 56) {
             scrollBtn.classList.remove('d-none');
-        }
-    }
-    else{
-        if(!scrollBtn.classList.contains('d-none')) {
+        } else {
             scrollBtn.classList.add('d-none');
         }
     }
@@ -47,105 +47,106 @@ window.addEventListener('scroll', () => {
         window.requestAnimationFrame(updateScrollState);
         ticking = true;
     }
-const navbarCollapse = document.getElementById('navbarNav');
-const scrollBtn = document.getElementById('scrollToTopBtn');
+});
 
-let ticking = false;
-const navbarCollapse = document.getElementById('navbarNav');
-
-// Debounce utility to improve performance
-function debounce(func, wait) {
-    let timeout;
-    return function(...args) {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func.apply(this, args), wait);
-    };
+// Scroll to top button click event
+if (scrollBtn) {
+    scrollBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
 }
 
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            const scrollY = window.scrollY;
+// Hamburger menu logic
+if (hamburger) {
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        // Toggle navbar style immediately when opening menu if at top
+        if (window.scrollY <= 56 && navElement) {
+            navElement.classList.toggle('navbar-scrolled');
+            navElement.classList.toggle('navbar-light');
+            navElement.classList.toggle('navbar-dark');
+            navElement.classList.toggle('navbar-gradient');
+        }
+    });
+}
 
-            // Navbar logic
-            if(!hamburger.classList.contains('active')){
-                if(scrollY >= 56){
-                    navElement.classList.add('navbar-scrolled');
-                    navElement.classList.add('navbar-light');
-                    navElement.classList.remove('navbar-dark');
-                    navElement.classList.remove('navbar-gradient');
+// Close navbar when clicking outside
+document.addEventListener('click', (event) => {
+    if (hamburger && hamburger.classList.contains('active')) {
+        // Check if click is outside the navbar
+        if (navElement && !navElement.contains(event.target)) {
+            // Close the hamburger menu
+            hamburger.classList.remove('active');
+
+            // Collapse the navbar
+            if (navbarCollapse) {
+                // Try to use Bootstrap API if available, otherwise fallback to class manipulation
+                if (typeof bootstrap !== 'undefined' && bootstrap.Collapse) {
+                     const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                     if (bsCollapse) {
+                         bsCollapse.hide();
+                     } else {
+                        // If instance not found, create one and hide? Or just remove class.
+                        // Removing class is safer if we are not sure about the instance.
+                        navbarCollapse.classList.remove('show');
+                     }
+                } else {
+                    navbarCollapse.classList.remove('show');
                 }
-                else{
-                    navElement.classList.remove('navbar-scrolled');
-                    navElement.classList.add('navbar-dark');
-                    navElement.classList.remove('navbar-light');
-                    navElement.classList.add('navbar-gradient');
-                };
             }
 
-            // Scroll to top button logic
-            if (scrollBtn) {
-                if(scrollY >= 56){
-                    scrollBtn.classList.remove('d-none');
-                }
-                else{
-                    scrollBtn.classList.add('d-none');
-                }
+            // Reset navbar color if at top
+            if (window.scrollY <= 56 && navElement) {
+                navElement.classList.remove('navbar-scrolled', 'navbar-light');
+                navElement.classList.add('navbar-dark', 'navbar-gradient');
             }
-
-            ticking = false;
-        });
-
-        ticking = true;
+        }
     }
 });
 
 // Handle window resize - close hamburger menu and scroll to top when going from small to big screen
 window.addEventListener('resize', debounce(() => {
     // Check if window is now larger than the lg breakpoint (992px)
-    if(window.innerWidth >= 992 && hamburger.classList.contains('active')) {
-        // Close the hamburger menu
-        hamburger.classList.remove('active');
-        // Collapse the navbar
-        if(navbarCollapse) {
-            navbarCollapse.classList.remove('show');
+    if (window.innerWidth >= 992) {
+        if (hamburger && hamburger.classList.contains('active')) {
+             hamburger.classList.remove('active');
+             if (navbarCollapse) {
+                 navbarCollapse.classList.remove('show');
+             }
         }
+
         // Update navbar styling based on current scroll position
-        if(window.scrollY >= 56){
-            navElement.classList.add('navbar-scrolled');
-            navElement.classList.add('navbar-light');
-            navElement.classList.remove('navbar-dark');
-            navElement.classList.remove('navbar-gradient');
+        if (navElement) {
+            if (window.scrollY >= 56) {
+                navElement.classList.add('navbar-scrolled', 'navbar-light');
+                navElement.classList.remove('navbar-dark', 'navbar-gradient');
+            } else {
+                navElement.classList.remove('navbar-scrolled', 'navbar-light');
+                navElement.classList.add('navbar-dark', 'navbar-gradient');
+            }
         }
-        else{
-            navElement.classList.remove('navbar-scrolled');
-            navElement.classList.add('navbar-dark');
-            navElement.classList.remove('navbar-light');
-            navElement.classList.add('navbar-gradient');
-        }
-        // Scroll to top
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
     }
 }, 200));
+
 
 // Search functionality
 const faqSearchInput = document.getElementById('faqSearchInput');
 const searchSubmitBtn = document.getElementById('searchSubmitBtn');
 
 if (faqSearchInput) {
-  faqSearchInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-      performFaqSearch();
-    }
-  });
-};
+    faqSearchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            performFaqSearch();
+        }
+    });
+}
 
 if (searchSubmitBtn) {
-  searchSubmitBtn.addEventListener('click', performFaqSearch);
-};
+    searchSubmitBtn.addEventListener('click', performFaqSearch);
+}
 
 // FAQ data for matching
 const faqs = [
@@ -198,7 +199,7 @@ function performFaqSearch() {
   
   if (!searchTerm) {
     return;
-  };
+  }
 
   // Find matching FAQ
   let matchedFaq = null;
@@ -210,17 +211,20 @@ function performFaqSearch() {
     if (titleMatch || keywordMatch) {
       matchedFaq = faq;
       break;
-    };
+    }
   }
-;
+
   // Navigate to FAQs and expand the matching accordion
-  window.location.href = 'FAQs.html';
-  
-  // Store search term in sessionStorage to be used after page load
   if (matchedFaq) {
-    sessionStorage.setItem('expandFaqId', matchedFaq.id);
-  };
-};
+      sessionStorage.setItem('expandFaqId', matchedFaq.id);
+  }
+
+  if (!window.location.pathname.includes('FAQs.html')) {
+       window.location.href = 'FAQs.html';
+  } else {
+       window.location.reload();
+  }
+}
 
 // On FAQs page, expand the matching accordion if sessionStorage has data
 if (window.location.pathname.includes('FAQs.html') || document.title.includes('FAQs')) {
@@ -229,67 +233,17 @@ if (window.location.pathname.includes('FAQs.html') || document.title.includes('F
     if (expandFaqId) {
       const faqElement = document.getElementById(expandFaqId);
       if (faqElement) {
-        // Using Bootstrap's collapse API
-        const bsCollapse = new bootstrap.Collapse(faqElement, {
-          toggle: true
-        });
-        // Scroll to the accordion
-        faqElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      };
+        if (typeof bootstrap !== 'undefined') {
+             const bsCollapse = new bootstrap.Collapse(faqElement, {
+                toggle: true
+             });
+             faqElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }
       sessionStorage.removeItem('expandFaqId');
     }
   });
-};
-
-
-// Scroll 2 top btn
-
-scrollBtn.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-if (scrollBtn) {
-    scrollBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-    });
 }
- 
-// Hamburge menu logic
-
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    if(window.scrollY <= 56){
-        navElement.classList.toggle('navbar-scrolled');
-        navElement.classList.toggle('navbar-light');
-        navElement.classList.toggle('navbar-dark');
-        navElement.classList.toggle('navbar-gradient');
-    }        
-});
-
-// Close navbar when clicking outside
-document.addEventListener('click', (event) => {
-    const navbar = document.querySelector('.navbar');
-    
-    // Check if click is outside the navbar
-    if (!navElement.contains(event.target) && hamburger.classList.contains('active')) {
-        // Close the hamburger menu
-        hamburger.classList.remove('active');
-        // Collapse the navbar
-        if(navbarCollapse) {
-            navbarCollapse.classList.remove('show');
-        }
-        // Reset navbar color if at top
-        if(window.scrollY <= 56){
-            navElement.classList.remove('navbar-scrolled');
-            navElement.classList.remove('navbar-light');
-            navElement.classList.add('navbar-dark');
-            navElement.classList.add('navbar-gradient');
-        }
-    }
-});
 
 // Password validation for registration form
 const registrationForm = document.getElementById('registration-form');
