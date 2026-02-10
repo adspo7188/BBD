@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadBoyDating - Registrering</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="icon" type="image/png" href="img/bbdlogo.png">
+    <script defer src="js/bootstrap.bundle.js"></script>
+    <script defer src="js/index.js"></script>
+    <script defer src="js/auth.js"></script>
+</head>
+<body class="bg-light">
+
+<!-- header -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient">
+  <div class="container-fluid">
+    <a href="index.html">
+        <img class="nav-img" src="img/bbdlogo.png" alt="BadBoyDating Logo">
+    </a>
+    <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Hjem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="FAQs.html">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logginn.html">Logg inn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="registrering.html">Registrering</a>
+        </li>
+        <li class="nav-item navbar-search-item">
+          <div class="navbar-search">
+            <input type="text" id="faqSearchInput" class="search-input" placeholder="Søk..." aria-label="Søk i FAQs">
+            <button id="searchSubmitBtn" class="search-submit-btn" aria-label="Utfør søk">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.397h-.001c.003-.003.006-.007.009-.01l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.009-.01zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- background image (decorative) -->
+<img class="bg-image" src="img/webdev.jpg" alt="" aria-hidden="true">
+
+<!-- main -->
+<main class="d-flex align-items-center justify-content-center pb-5">
+    <div class="page-container-2 text-center">
+        <h1 class="display-4 fw-bold text-white mb-4 main-title-design">
+            Registrer deg for <br><span class="text-danger">fengslende</span> kjærlighet.
+        </h1>
+        <form action="/register" method="post" id="registration-form" class="mt-4 bg-white p-3 rounded shadow">
+            <div id="password-error" class="alert alert-danger d-none" role="alert">
+                Passordene må være identiske.
+            </div>
+            <div class="mb-3">
+                <label for="username" class="form-label lead">Brukernavn</label>
+                <input type="text" class="form-control form-control-lg" id="username" placeholder="Skriv ditt brukernavn" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label lead">Passord</label>
+                <input type="password" class="form-control form-control-lg" id="password" placeholder="***************" required>
+            </div>
+            <div class="mb-3">
+                <label for="password2" class="form-label lead">Gjenta passord</label>
+                <input type="password" class="form-control form-control-lg" id="password2" placeholder="***************" required>
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label lead">Telefonnummer</label>
+                <input type="text" class="form-control form-control-lg" id="phoneNumber" placeholder="Telefonnummer" required>
+            </div>
+            <div class="mb-3">
+                <label for="epost" class="form-label lead">E-post</label>
+                <input type="text" class="form-control form-control-lg" id="epost" placeholder="E-post" required>
+            </div>
+            <button type="submit" class="btn btn-danger mt-2">Registrer</button>
+        </form>
+    </div>
+</main>
+
+<!-- footer -->
+<footer class="bg-light text-dark py-5" aria-label="Bånntekst med adresse, kontakt og lenker til sosiale medier">
+    <div class="container">
+    
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 footer">
+
+            <!-- adresse -->
+            <div class="col text-center text-md-start border-md-end border-md-start">
+                <h2 class="mb-2">BadBoyDating</h2>
+                    <p class="mb-1">En datingside med fokus på å skape et liv sammen.</p>
+                    <p class="mb-1">Forstå menneske bak handlingen og mestre fremtiden sammen.</p>
+            </div>
+
+            <!-- kontakt -->
+            <div class="col text-center text-md-start border-md-end border-md-start">
+                <h2 class="mb-2">Kontakt</h2>
+                    <p class="mb-1">badboydating@love.com</p>
+                    <p class="mb-1">support@badboydating.com</p>
+            </div>
+
+            <!-- sosiale medier -->
+            <div class="col text-center text-md-start border-md-end border-md-start socials">
+                <h2 class="mb-3">Følg oss</h2>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Facebook">
+                    <img src="bootstrap-icons-1.13.1/facebook.svg" alt="BadBoyDating på Facebook" height="32px" width="32px">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Linkedin">
+                    <img src="bootstrap-icons-1.13.1/linkedin.svg" alt="BadBoyDating på Linkedin" height="32px" width="32px">
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Twitter">
+                    <img src="bootstrap-icons-1.13.1/twitter-x.svg" alt="BadBoyDating på Twitter" height="32px" width="32px">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Instagram">
+                    <img src="bootstrap-icons-1.13.1/instagram.svg" alt="BadBoyDating på Instagram" height="32px" width="32px">
+                </a>
+                <a href="https://www.snapchat.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Snapchat">
+                    <img src="bootstrap-icons-1.13.1/snapchat.svg" alt="BadBoyDating på Snapchat" height="32px" width="32px">
+                </a>                
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+<button id="scrollToTopBtn" class="d-none" title="Gå til toppen" aria-label="Knapp for å gå til toppen av siden">&#8593;</button>
+
+</body>
+</html>
