@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BadBoyDating - FAQs</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="icon" type="image/png" href="img/bbdlogo.png">
+    <script defer src="js/bootstrap.bundle.js"></script>
+    <script defer src="js/index.js"></script>
+    <script defer src="js/auth.js"></script>
+</head>
+<body class="bg-light">
+
+<!-- header -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top navbar-gradient">
+  <div class="container-fluid">
+    <a href="index.html">
+        <img class="nav-img" src="img/bbdlogo.png" alt="BadBoyDating Logo">
+    </a>
+    <button id="hamburger" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Hjem</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="FAQs.html">FAQs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="logginn.html">Logg inn</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="registrering.html">Registrering</a>
+        </li>
+        <li class="nav-item navbar-search-item">
+          <div class="navbar-search">
+            <input type="text" id="faqSearchInput" class="search-input" placeholder="Søk..." aria-label="Søk i FAQs">
+            <button id="searchSubmitBtn" class="search-submit-btn" aria-label="Utfør søk">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.397h-.001c.003-.003.006-.007.009-.01l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.009-.01zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- background image (decorative) -->
+<img class="bg-image" src="img/webdev.jpg" alt="" aria-hidden="true">
+
+<!-- main -->
+<main class="d-flex align-items-center justify-content-center pb-5">
+    <div class="page-container-2 text-center">
+        <h1 class="display-4 fw-bold text-white mb-4 main-title-design">
+            Vi svarer på de <span class="text-danger">mest stilte spørsmålene</span> vi har fått.
+        </h1>
+        <div class="accordion" id="accordionExample">
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                   #1 Hvordan oppretter jeg en profil?
+                </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>For å opprette en profil, klikk på "Registrer deg" på forsiden.</strong> Fyll ut skjemaet med din informasjon, last opp et profilbilde, og skriv en kort biografi for å fortelle andre hvem du er.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  #2  Er BadBoyDating trygt å bruke?
+                </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Vi tar sikkerheten til våre brukere på alvor.</strong> Vi har et team som jobber med å fjerne falske profiler, og vi oppfordrer alle til å rapportere mistenkelig oppførsel. Del aldri personlig finansiell informasjon med andre brukere.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                   #3 Hvordan fungerer matching?
+                </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Vår algoritme foreslår matcher basert på informasjonen du oppgir i profilen din, som interesser, alder og sted.</strong> Du kan også bla gjennom profiler selv og sende meldinger til de du finner interessante.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                   #4 Hva koster det å bruke tjenesten?
+                </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Det er gratis å opprette en profil, bla gjennom matcher og sende et begrenset antall meldinger.</strong> For ubegrenset tilgang og ekstra funksjoner, tilbyr vi et premium-abonnement.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                   #5 Hvordan kan jeg slette profilen min?
+                </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Du kan slette profilen din under "Innstillinger" på profilsiden din.</strong> Vær oppmerksom på at dette er en permanent handling som ikke kan angres.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                   #6 Hva bør jeg skrive i min første melding?
+                </button>
+                </h2>
+                <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Vær deg selv!</strong> Prøv å finne noe interessant i profilen deres du kan kommentere på. Unngå standardmeldinger og vis at du har lest profilen deres.
+                </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                   #7 Hvordan rapporterer jeg en annen bruker?
+                </button>
+                </h2>
+                <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <strong>Hvis en bruker plager deg eller du mistenker at profilen er falsk, kan du rapportere dem ved å klikke på "Rapporter"-knappen på profilsiden deres.</strong> Vårt team vil da undersøke saken.
+                </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<!-- footer -->
+<footer class="bg-light text-dark py-5" aria-label="Bånntekst med adresse, kontakt og lenker til sosiale medier">
+    <div class="container">
+    
+
+        <div class="row row-cols-1 row-cols-md-3 g-4 footer">
+
+            <!-- adresse -->
+            <div class="col text-center text-md-start border-md-end border-md-start">
+                <h2 class="mb-2">BadBoyDating</h2>
+                    <p class="mb-1">En datingside med fokus på å skape et liv sammen.</p>
+                    <p class="mb-1">Forstå menneske bak handlingen og mestre fremtiden sammen.</p>
+            </div>
+
+            <!-- kontakt -->
+            <div class="col text-center text-md-start border-md-end border-md-start">
+                <h2 class="mb-2">Kontakt</h2>
+                    <p class="mb-1">badboydating@love.com</p>
+                    <p class="mb-1">support@badboydating.com</p>
+            </div>
+
+            <!-- sosiale medier -->
+            <div class="col text-center text-md-start border-md-end border-md-start socials">
+                <h2 class="mb-3">Følg oss</h2>
+                <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Facebook">
+                    <img src="bootstrap-icons-1.13.1/facebook.svg" alt="BadBoyDating på Facebook" height="32px" width="32px">
+                </a>
+                <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Linkedin">
+                    <img src="bootstrap-icons-1.13.1/linkedin.svg" alt="BadBoyDating på Linkedin" height="32px" width="32px">
+                </a>
+                <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Twitter">
+                    <img src="bootstrap-icons-1.13.1/twitter-x.svg" alt="BadBoyDating på Twitter" height="32px" width="32px">
+                </a>
+                <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Instagram">
+                    <img src="bootstrap-icons-1.13.1/instagram.svg" alt="BadBoyDating på Instagram" height="32px" width="32px">
+                </a>
+                <a href="https://www.snapchat.com" target="_blank" rel="noopener noreferrer" aria-label="BadBoyDating på Snapchat">
+                    <img src="bootstrap-icons-1.13.1/snapchat.svg" alt="BadBoyDating på Snapchat" height="32px" width="32px">
+                </a>                
+            </div>
+
+        </div>
+    </div>
+
+</footer>
+
+<button id="scrollToTopBtn" class="d-none" title="Gå til toppen" aria-label="Knapp for å gå til toppen av siden">&#8593;</button>
+
+</body>
+</html>
