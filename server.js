@@ -29,15 +29,51 @@ io.use((socket, next) => {
     sessionMiddleware(socket.request, {}, next);
 });
 
-
-// Database connection
-const db = new sqlite3.Database('./users.db', (err) => {
+// Database connection & Initialization
+const dbName = process.env.DB_NAME || './users.db';
+const db = new sqlite3.Database(dbName, (err) => {
     if (err) {
         console.error('Error opening database', err.message);
     } else {
         console.log('Connected to the SQLite database.');
+        initializeDatabase();
     }
 });
+
+function initializeDatabase() {
+    db.serialize(() => {
+        // Users table
+        db.run(`CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            email TEXT UNIQUE,
+            phone TEXT
+        )`);
+
+        // Matches table
+        db.run(`CREATE TABLE IF NOT EXISTS matches (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user1_id INTEGER NOT NULL,
+            user2_id INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            UNIQUE(user1_id, user2_id)
+        )`);
+
+        // Messages table
+        db.run(`CREATE TABLE IF NOT EXISTS messages (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sender_id INTEGER NOT NULL,
+            receiver_id INTEGER NOT NULL,
+            content TEXT NOT NULL,
+            timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY(sender_id) REFERENCES users(id),
+            FOREIGN KEY(receiver_id) REFERENCES users(id)
+        )`);
+
+        console.log('Database tables verified/created.');
+    });
+}
 
 // Helper function to ensure user is authenticated
 function isAuthenticated(req, res, next) {
@@ -166,7 +202,6 @@ app.post('/api/match', isAuthenticated, (req, res) => {
         }
 
         // Create match
-        // Ensure consistent ordering for cleaner DB if we wanted, but here just insert
         const insertSql = `INSERT INTO matches (user1_id, user2_id) VALUES (?, ?)`;
         db.run(insertSql, [currentUserId, targetUserId], function(err) {
             if (err) {
@@ -196,7 +231,6 @@ app.get('/api/matches', isAuthenticated, (req, res) => {
         JOIN users u2 ON m.user2_id = u2.id
         WHERE m.user1_id = ? OR m.user2_id = ?
     `;
-    // Improved query to explicitly select the 'other' user
 
     db.all(sql, [currentUserId, currentUserId, currentUserId, currentUserId], (err, rows) => {
         if (err) {
